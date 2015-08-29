@@ -11,39 +11,46 @@
     <h1>RedMart Coding Challenge: Skiing in Singapore</h1>
     <div class="form-container container">
         <form name="settings">
-            <h3>Dimension</h3>
-            <p>
-                <label for="horizontal">Horizontal: </label>
-                <input type="text" name="horizontal" id="horizontal" value="100">
-            </p>
-            <p>
-                <label for="vertical">Vertical: </label>
-                <input type="text" name="horizontal" id="vertical" value="100">
-            </p>
-            <h3>Height Range</h3>
-            <p>
-                <label for="min">Min: </label>
-                <input type="text" name="min" id="min" value="1">
-            </p>
-            <p>
-                <label for="max">Max: </label>
-                <input type="text" name="max" id="max" value="500">
-            </p>
+            <fieldset>
+                <legend>Dimension</legend>
+                <p><em>*Due to DOM manipulation, try not to exceed a dimension of 500x500.</em></p>
+                <p>
+                    <label for="horizontal">X (Horizontal): </label>
+                    <input type="text" name="horizontal" id="horizontal" value="20">
+                </p>
+                <p>
+                    <label for="vertical">Y (Vertical): </label>
+                    <input type="text" name="vertical" id="vertical" value="20">
+                </p>
+            </fieldset>
+            <fieldset>
+                <legend>Altitude Range</legend>
+                <p>
+                    <label for="min">Min: </label>
+                    <input type="text" name="min" id="min" value="1">
+                </p>
+                <p>
+                    <label for="max">Max: </label>
+                    <input type="text" name="max" id="max" value="500">
+                </p>
+            </fieldset>
             <p>
                 <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
             </p>
         </form>
     </div>
     <div class="result-container container">
-        <table id="">
-        </table>
     </div>
 
     <script src="/scripts/jquery-2.1.4.min.js"></script>
+    <script src="/scripts/skiConqueror.js"></script>
     <script>
     $(document).ready(function(){
+        var sc = undefined;
+
         function compute(settings) {
-            console.log(settings);
+            sc = new SkiConqueror('.result-container', settings);
         }
 
         $("form[name='settings']").submit(function(e){
@@ -54,6 +61,12 @@
                 min: parseInt($("input[name='min']").val()),
                 max: parseInt($("input[name='max']").val())
             });
+        });
+
+        $("form[name='settings']").on('reset', function(e) {
+            if( sc ) {
+                sc.reset();
+            }
         });
     });
     </script>

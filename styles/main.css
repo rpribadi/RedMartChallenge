@@ -1,11 +1,36 @@
 body {
     font-family: Open Sans,sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
     line-height: 22px;
 }
 
-.container {
+h3, p {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+fieldset {
     border: 1px solid #CCC;
+    margin-bottom: 15px;
+}
+fieldset legend {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.container {
+    /*border: 1px solid #CCC;*/
     padding: 10px;
+}
+
+.ski-conqueror {
+    text-align: center;
+    font-size: 9px;
+    border-collapse: collapse;
+}
+
+.ski-conqueror td {
+    padding: 2px;
+    border: 1px solid #CCC;
 }
